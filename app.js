@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://admin-bryson:notgoku23@cluster0.7uf3o1c.mongodb.net/todolistDB");
 const itemSchema = {
     name: String
 };
@@ -128,8 +128,11 @@ app.post("/delete", function(req, res){
 });
 
 
+let port = process.env.PORT;
+if(port==null|| port=""){
+    port = 3000
+}
 
-
-app.listen( process.env.PORT || 3000, function () {
+app.listen( port, function () {
     console.log("opened on port 3000");
 });
